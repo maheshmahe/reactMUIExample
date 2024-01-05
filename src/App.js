@@ -3,7 +3,6 @@ import MUIDataTable from "mui-datatables";
 import data from "./smalldata";
 import { useEffect, useState } from 'react';
 function App() {
-  console.log(data);
   const [loadTable,setLoadTable] = useState(true);
   const columns = ["UUID", "Name", "Email", "Password"];
   useEffect(()=>{
