@@ -1,23 +1,19 @@
 import './App.css';
 import MUIDataTable from "mui-datatables";
 import data from "./smalldata";
+import { useEffect, useState } from 'react';
 function App() {
   console.log(data);
+  const [loadTable,setLoadTable] = useState(true);
   const columns = ["UUID", "Name", "Email", "Password"];
-  /*const columns = [
-    { label: "UUID", key: "uuid", sort: false },
-    { label: "Name Name", key: "name", sort: false },
-    { label: "Email", key: "email" },
-    { label: "Password", key: "password" },
-    {
-      label: "Action",
-      key: "action"
-    }
-  ];*/
+  useEffect(()=>{
+    //setLoadTable(true);
+}, [])
   const options = {
-    filterType: 'checkbox',
+    filterType: "dropdown",
+    filter: false
   };
-  
+
 
   return (
     <div className="App">
@@ -25,12 +21,16 @@ function App() {
         <p>
           MUI datatables
         </p>
-        <MUIDataTable
+        {
+          loadTable &&
+          <MUIDataTable
             data={data}
             columns={columns}
             options={options}
             title={"User Data"}
           />
+        }
+        
       </header>
     </div>
   );
